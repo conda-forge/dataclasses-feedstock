@@ -1,4 +1,4 @@
-{% set version = "0.5" %}
+{% set version = "0.6" %}
 
 package:
   name: dataclasses
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dataclasses/dataclasses-{{ version }}.tar.gz
-  sha256: 3f20420c953ecf4c4df68f3aaee48dea69a87935aaeceffce1176b5366b08f1e
+  sha256: 6988bd2b895eef432d562370bb707d540f32f7360ab13da45340101bc2307d84
 
 build:
   number: 0
