@@ -28,6 +28,7 @@ test:
 about:
   home: https://github.com/ericvsmith/dataclasses
   license: MIT
+  license_file: LICENSE.txt
   summary: 'An implementation of PEP 557: Data Classes'
 
 extra:
