@@ -3,7 +3,7 @@ About dataclasses
 
 Home: https://github.com/ericvsmith/dataclasses
 
-Package license: MIT
+Package license: Apache-2.0
 
 Feedstock license: BSD 3-Clause
 
@@ -15,14 +15,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Appveyor</td>
-    <td>
-      <a href="https://ci.appveyor.com/project/conda-forge/dataclasses-feedstock/branch/master">
-        <img alt="windows" src="https://img.shields.io/appveyor/ci/conda-forge/dataclasses-feedstock/master.svg?label=Windows">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
