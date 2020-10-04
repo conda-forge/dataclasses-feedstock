@@ -1,3 +1,5 @@
+build_script:
+- build_pip
 channel_sources:
 - conda-forge,defaults
 channel_targets:
