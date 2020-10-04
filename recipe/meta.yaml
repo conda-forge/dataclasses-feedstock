@@ -11,11 +11,11 @@ source:
 
 build:
   {% if build_script == 'noop' %}
-  number: {{ int(build_number) * 2 + 1 }}
-  script: ./noop.sh
+  number: {{ build_number | int * 2 + 1 }}
+  script: {{ PYTHON }} --version
   {% else %}
-  number: {{ int(build_number) * 2 }}
-  script: ./build_pip.sh
+  number: {{ build_number | int * 2 }}
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
   {% endif %}
   noarch: python
 
