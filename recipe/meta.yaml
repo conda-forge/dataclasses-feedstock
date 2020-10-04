@@ -10,16 +10,29 @@ source:
 
 build:
   number: 1
-  skip: true  # [py==27]
-  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [py==36]
-  script: {{ PYTHON }} --version                                      # [py!=36]
+  noarch: python
 
-requirements:
-  host:
-    - python
-    - pip
-  run:
-    - python
+outputs:
+  - name: dataclasses
+    version: "1!{{ version }}"
+    script: noop.sh
+    requirements:
+      host:
+        - python >=3.7
+        - pip
+      run:
+        - python >=3.7
+
+  - name: dataclasses
+    version: "{{ version }}"
+    script: build_python.sh
+    requirements:
+      host:
+        - python =3.6
+        - pip
+      run:
+        - python =3.6
+
 
 test:
   imports:
