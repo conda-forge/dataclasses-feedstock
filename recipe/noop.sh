@@ -1,1 +1,1 @@
-{{ PYTHON }} --version
+$PYTHON --version
