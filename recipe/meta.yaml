@@ -1,4 +1,5 @@
 {% set version = "0.7" %}
+{% set build_number = 1 %}
 
 package:
   name: dataclasses
@@ -9,35 +10,34 @@ source:
   sha256: 494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6
 
 build:
-  number: 1
+  {% if build_script == 'noop' %}
+  number: {{ int(build_number) * 2 + 1 }}
+  script: ./noop.sh
+  {% else %}
+  number: {{ int(build_number) * 2 }}
+  script: ./build_pip.sh
+  {% endif %}
   noarch: python
 
-outputs:
-  - name: dataclasses
-    version: "1!{{ version }}"
-    script: noop.sh
-    requirements:
-      host:
-        - python >=3.7
-        - pip
-      run:
-        - python >=3.7
-    test:
-      imports:
-        - dataclasses
+requirements:
+  host:
+    {% if build_script == 'noop' %}
+    - python >=3.7
+    {% else %}
+    - python >=3.6,<3.7
+    {% endif %}
+    - pip
+  run:
+    {% if build_script == 'noop' %}
+    - python >=3.7
+    {% else %}
+    - python >=3.6,<3.7
+    {% endif %}
 
-  - name: dataclasses
-    version: "{{ version }}"
-    script: build_python.sh
-    requirements:
-      host:
-        - python =3.6
-        - pip
-      run:
-        - python =3.6
-    test:
-      imports:
-        - dataclasses
+
+test:
+  imports:
+    - dataclasses
 
 about:
   home: https://github.com/ericvsmith/dataclasses
