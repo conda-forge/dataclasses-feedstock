@@ -1,4 +1,5 @@
 {% set version = "0.7" %}
+{% set build_number = 1 %}
 
 package:
   name: dataclasses
@@ -9,17 +10,30 @@ source:
   sha256: 494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6
 
 build:
-  number: 0
-  skip: true  # [py==27]
-  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .  # [py==36]
-  script: {{ PYTHON }} --version                                      # [py!=36]
+  {% if build_script == 'noop' %}
+  number: {{ build_number | int * 2 + 1 }}
+  script: {{ PYTHON }} --version
+  {% else %}
+  number: {{ build_number | int * 2 }}
+  script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
+  {% endif %}
+  noarch: python
 
 requirements:
   host:
-    - python
+    {% if build_script == 'noop' %}
+    - python >=3.7
+    {% else %}
+    - python >=3.6,<3.7
+    {% endif %}
     - pip
   run:
-    - python
+    {% if build_script == 'noop' %}
+    - python >=3.7
+    {% else %}
+    - python >=3.6,<3.7
+    {% endif %}
+
 
 test:
   imports:
