@@ -5,11 +5,9 @@ Home: https://github.com/ericvsmith/dataclasses
 
 Package license: Apache-2.0
 
-Feedstock license: BSD-3-Clause
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/dataclasses-feedstock/blob/master/LICENSE.txt)
 
 Summary: An implementation of PEP 557: Data Classes
-
-
 
 Current build status
 ====================
