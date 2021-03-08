@@ -1,5 +1,5 @@
-{% set version = "0.7" %}
-{% set build_number = 3 %}
+{% set version = "0.8" %}
+{% set build_number = 0 %}
 
 package:
   name: dataclasses
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/d/dataclasses/dataclasses-{{ version }}.tar.gz
-  sha256: 494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6
+  sha256: 8479067f342acf957dc82ec415d355ab5edb7e7646b90dc6e2fd1d96ad084c97
 
 build:
   {% if build_script == 'noop' %}
