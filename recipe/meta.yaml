@@ -1,5 +1,5 @@
 {% set version = "0.8" %}
-{% set build_number = 0 %}
+{% set build_number = 1 %}
 
 package:
   name: dataclasses
@@ -12,7 +12,7 @@ source:
 build:
   {% if build_script == 'noop' %}
   number: {{ build_number | int * 2 + 1 }}
-  script: {{ PYTHON }} --version
+  script: noop.sh
   {% else %}
   number: {{ build_number | int * 2 }}
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
@@ -36,8 +36,13 @@ requirements:
 
 
 test:
+  requires:
+    - setuptools
   imports:
     - dataclasses
+  commands:
+    - python -c "from dataclasses import dataclass"
+    - python -c "import pkg_resources as p; p.get_distribution('dataclasses')"
 
 about:
   home: https://github.com/ericvsmith/dataclasses
