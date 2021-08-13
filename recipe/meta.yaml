@@ -12,7 +12,7 @@ source:
 build:
   {% if build_script == 'noop' %}
   number: {{ build_number | int * 2 + 1 }}
-  script: bash noop.sh
+  script: bash {{ RECIPE_DIR }}/noop.sh
   {% else %}
   number: {{ build_number | int * 2 }}
   script: {{ PYTHON }} -m pip install --no-deps --ignore-installed .
