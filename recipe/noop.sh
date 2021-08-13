@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cat <<EOF > setup.py
 import os
 from setuptools import setup
